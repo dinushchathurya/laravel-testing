@@ -9,7 +9,17 @@ use Illuminate\Http\Request;
 use App\Models\Company;
 
 class CompanyController extends Controller
-{
+{   
+    /* get all companies */
+    public function getAllCompanies()
+    {
+        $companies = Company::all();
+        return response([ 
+            'message' => 'Retrieved successfully'
+        ], 200);
+    }
+
+    /* create company */
     public function createCompany(Request $request) 
     {
         $data = $request->all();
@@ -27,7 +37,7 @@ class CompanyController extends Controller
             ], 422);
         }
 
-        $comapny = Company::create($data);
+        $company = Company::create($data);
 
         return response([
             'message' => 'Company created successfully'

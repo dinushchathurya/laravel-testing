@@ -23,7 +23,7 @@ class CompanyControllerTest extends TestCase
             ]);
     }
 
-    /* check successfull create company */
+    /* check successfully create company */
     public function testCompanyCreatedSuccessfully()
     {
         $data = [
@@ -37,6 +37,16 @@ class CompanyControllerTest extends TestCase
             ->assertStatus(201)
             ->assertJson([
                 "message" => "Company created successfully"
+            ]);
+    }
+
+    /* check successfully retrieve company */
+    public function testGetAllCompaniesSuccessfully()
+    {   
+        $this->json('GET', 'api/company', ['Accept' => 'application/json'])
+            ->assertStatus(200)
+            ->assertJson([
+                "message" => "Retrieved successfully"
             ]);
     }
 }
